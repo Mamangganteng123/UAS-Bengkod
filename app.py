@@ -6,21 +6,36 @@ st.set_page_config(page_title="Prediksi Churn Telco")
 
 st.title("Prediksi Churn Pelanggan Telco")
 
-# Load model
 model = joblib.load("best_churn_model.pkl")
 
 st.write("Masukkan data pelanggan:")
 
-# INPUT (MINIMAL SESUAI MODEL NUMERIK)
+# INPUT NUMERIK
 tenure = st.number_input("Tenure (bulan)", min_value=0)
 monthly = st.number_input("Monthly Charges", min_value=0.0)
 total = st.number_input("Total Charges", min_value=0.0)
 
-# DataFrame input
+# DATAFRAME LENGKAP (DEFAULT VALUE)
 input_df = pd.DataFrame({
-    "tenure": [tenure],
-    "MonthlyCharges": [monthly],
-    "TotalCharges": [total]
+    'gender': ['Male'],
+    'SeniorCitizen': [0],
+    'Partner': ['No'],
+    'Dependents': ['No'],
+    'tenure': [tenure],
+    'PhoneService': ['Yes'],
+    'MultipleLines': ['No'],
+    'InternetService': ['Fiber optic'],
+    'OnlineSecurity': ['No'],
+    'OnlineBackup': ['Yes'],
+    'DeviceProtection': ['No'],
+    'TechSupport': ['No'],
+    'StreamingTV': ['Yes'],
+    'StreamingMovies': ['Yes'],
+    'Contract': ['Month-to-month'],
+    'PaperlessBilling': ['Yes'],
+    'PaymentMethod': ['Electronic check'],
+    'MonthlyCharges': [monthly],
+    'TotalCharges': [total]
 })
 
 st.write("Data input:")
